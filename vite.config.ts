@@ -9,26 +9,23 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   return {
     resolve: {
       alias: {
-        "~/": `${path.resolve(__dirname, "src")}`,
-      },
+        '~/': `${path.resolve(__dirname, 'src')}`
+      }
     },
-    server:{
-      host:true,
-      open:true
+    server: {
+      host: true,
+      open: true
     },
-    plugins:[
+    plugins: [
       Vue({
-        reactivityTransform:true
+        reactivityTransform: true
       }),
       AutoImport({
-        imports:[
-          'vue',
-          'vue/macros',
-        ],
-        dts:true
+        imports: ['vue', 'vue/macros'],
+        dts: true
       }),
       Compoents({
-        dts:true
+        dts: true
       })
     ]
   }
