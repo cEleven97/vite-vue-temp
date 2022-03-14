@@ -1,7 +1,35 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
+import type { ConfigEnv, UserConfig } from 'vite'
+import path from 'path'
+import Vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Compoents from 'unplugin-vue-components/vite'
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()]
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
+  return {
+    resolve: {
+      alias: {
+        "~/": `${path.resolve(__dirname, "src")}`,
+      },
+    },
+    server:{
+      host:true,
+      open:true
+    },
+    plugins:[
+      Vue({
+        reactivityTransform:true
+      }),
+      AutoImport({
+        imports:[
+          'vue',
+          'vue/macros',
+        ],
+        dts:true
+      }),
+      Compoents({
+        dts:true
+      })
+    ]
+  }
 })
