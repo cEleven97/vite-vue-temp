@@ -21,7 +21,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         reactivityTransform: true
       }),
       AutoImport({
-        imports: ['vue', 'vue/macros'],
+        imports: ['vue', 'vue/macros', '@vueuse/core'],
         dts: true
       }),
       Compoents({
