@@ -6,10 +6,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Compoents from 'unplugin-vue-components/vite'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
+  console.log('__dirname: ', 111)
   return {
     resolve: {
       alias: {
-        '~/': `${path.resolve(__dirname, 'src')}`
+        '~': `${path.resolve(__dirname, 'src')}`
       }
     },
     server: {
@@ -21,7 +22,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         reactivityTransform: true
       }),
       AutoImport({
-        imports: ['vue', 'vue/macros', '@vueuse/core'],
+        imports: ['vue', 'vue/macros', '@vueuse/core', 'vue-router'],
         dts: true
       }),
       Compoents({

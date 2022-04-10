@@ -1,6 +1,8 @@
 <script setup lang="ts"></script>
-
 <template>
-  <router-view></router-view>
+  <div>
+    hellword
+    <router-link to="/">home</router-link>
+  </div>
 </template>
 <style lang="less" scoped></style>
